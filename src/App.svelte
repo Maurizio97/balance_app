@@ -1,9 +1,10 @@
 <script>
-    let totalSpese    = 0;
-    let gain     = 0;
-    let expenses = 0;
-    let input    = null;
-    let date = new Date();
+    let totalSpese = 0;
+    let gain       = 0;
+    let expenses   = 0;
+    let input      = null;
+    let date       = new Date();
+    let text       = ''
 
     /* struttura dati da salvare nel local storage */
     let spese = {
@@ -109,21 +110,54 @@
         if (e.charCode === 13 && input !== 0) {
             input > 0 ? (expenses += input) : (gain += input);
 
-            total = expenses + gain;
+            totalSpese = expenses + gain;
             input = null;
+            text  = null;
         }
     }
 </script>
 
 <main>
-    <h1>Totale {totalSpese}</h1>
-    <h1>Spese {gain}</h1>
-    <h1>Guadagni {expenses}</h1>
-
-    <div>
-        <input type="number" bind:value={input} on:keypress={addValue} />
+    <div class="container">
+        <h1 class="title"><span>Balance</span></h1>
+        <h4 class="title red">Spese {gain}</h4>
+        <h4 class="title green plus_app_fill">Guadagni {expenses}</h4>
+        <div>
+            <input type="number" bind:value={input} on:keypress={addValue} placeholder="Quantita'"/>
+            <input type="text" bind:value={text} on:keypress={addValue} placeholder="Descrizione">
+        </div>
+        <h4 class="title blue">Totale {totalSpese}</h4>
+        
     </div>
 </main>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300&display=swap');
+    .container {
+        font-family: 'Roboto Mono', monospace;
+        background-color: rgb(78, 77, 77);
+        color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title {
+        text-shadow: 2px 1px 5px darkblue;
+        margin: 1rem 0;
+
+    }
+    div {
+        text-align: center;
+    }
+    .blue {
+        color: var(--blue);
+    }
+    .red {
+        color: var(--red);
+    }
+    .green {
+        color: var(--green);
+    }
 </style>
