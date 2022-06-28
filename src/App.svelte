@@ -1,6 +1,8 @@
 <script>
     let hello = 'CIAOOOO'
     import Transaction from './transaction.svelte';
+    import Keypad from './keypad.svelte';
+
     import { onMount } from 'svelte';
 
     let spese = [];
@@ -107,11 +109,11 @@
             show();
         }
     }
-
 </script>
 
 <main>
     <div id="app">
+      <!-- <Keypad/> -->
       <div id="button_add">&plus;</div>
       <div class="container">
         <div class="balance">
@@ -148,24 +150,11 @@
          <Transaction Transaction={ hello }/>
         </div>
       </div>
+
     </div>
 </main>
 
 <style>
-    :root {
-  --primary: #7b56ff;
-  --secondary: #ff6fb7;
-  --tertiary: #a9e61c;
-  --other: #00c9ec;
-  --other2: #ffcd44;
-  --white: #FFFFFF;
-  --greyLight-1: #ebf2fc;
-  --greyLight-2: #d5ddf3;
-  --greyLight-3: #bec8e4;
-  --greyLight-4: #969eb4;
-  --greyDark: #5b657a;
-}
-
 #app {
   height: 100vh;
   background: var(--greyLight-1);
@@ -184,6 +173,7 @@
   background: var(--white);
   border-radius: 50%;
   box-shadow: 0px 6px 14px rgba(99, 85, 155, 0.4);
+  cursor: pointer;
 }
 
 [type="month"] {

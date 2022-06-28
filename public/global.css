@@ -1,13 +1,20 @@
+:root {
+	--primary: #7b56ff;
+	--secondary: #ff6fb7;
+	--tertiary: #a9e61c;
+	--other: #00c9ec;
+	--other2: #ffcd44;
+	--white: #FFFFFF;
+	--greyLight-1: #ebf2fc;
+	--greyLight-2: #d5ddf3;
+	--greyLight-3: #bec8e4;
+	--greyLight-4: #969eb4;
+	--greyDark: #5b657a;
+  }
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
-}
-
-.icon-trash {
-	color: black;
-	font-size: 100px;
-	height: 50px;
-	width: 50px;
 }

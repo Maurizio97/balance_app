@@ -81,13 +81,13 @@
 </ul>
 
 <style>
-  .container button {
+  button {
     outline: none;
     border: none;
     background: none;
     cursor: pointer;
   }
-  .balance__details ul {
+  ul {
     padding-right: 10px;
     overflow: auto;
   }
