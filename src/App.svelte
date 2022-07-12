@@ -109,13 +109,22 @@
             show();
         }
     }
+
+    function toggleKeypad() {
+      console.log('ciao');
+      // let view = 'keypad';
+    let keypad = document.querySelector("#keypad");
+    let main   = document.querySelector("#main");
+    keypad.classList.toggle("hidden");
+    main.classList.toggle("hidden");
+  }
 </script>
 
 <main>
     <div id="app">
-      <!-- <Keypad/> -->
-      <div id="button_add">&plus;</div>
-      <div class="container">
+      <Keypad/>
+      <div id="main" class="container hidden">
+        <div id="button_add" on:click={toggleKeypad}>&plus;</div>
         <div class="balance">
           <div class="balance__total">
             <h1>Balance</h1>
@@ -143,11 +152,11 @@
 
           <h3>Recent Transactions</h3>
           <input type="month" id="start" min="2010-01" max="2022-06" value="2022-06">
-          <!-- <div class="balance__empty">
+          <div class="balance__empty">
             <span class="material-icons">loyalty</span>
             <p>Start adding <br>a new transaction</p>
-          </div> -->
-         <Transaction Transaction={ hello }/>
+          </div>
+         <!-- <Transaction Transaction={ hello }/> -->
         </div>
       </div>
 
@@ -292,7 +301,7 @@
   margin: 2rem .4rem 1rem .4rem;
 }
 
-/* .balance__empty {
+.balance__empty {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -307,6 +316,5 @@
 }
 .balance__empty p {
   font-size: 1.4rem;
-} */
-
+}
 </style>

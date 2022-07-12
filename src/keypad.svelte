@@ -1,8 +1,30 @@
 <script>
+  let current = '0.00';
+  function toggleKeypad() {
+    let keypad = document.querySelector("#keypad");
+    let main   = document.querySelector("#main");
+    keypad.classList.toggle("hidden");
+    main.classList.toggle("hidden");
+  }
 
+  function getValue(val) {
+    // let key = val.target.innerText
+    // console.log(key);
+    let key = val.target.innerText;
+            if (current == '0.00' ) {
+                current = '';
+            }
+            if( current.length >= 6) {
+                current = 'error!';
+            }
+            current += key;
+            console.log(current);
+            // this.currentColor = '#5b657a';
+  }
 </script>
 
-<div class="container">
+<div id="keypad" class="container">
+  <div id="button_back" on:click={toggleKeypad} >&lt;</div>
   <div class="type">
 
       <div class="type__tab">
@@ -22,24 +44,24 @@
       </div>
 
       <div class="type__amount">
-      <p>£ 10000</p>
-      <div class="button_keypad">&plus;</div>
+        <p>€ {current}</p>
+        <div class="button_keypad">&plus;</div>
       </div>
   </div>
 
   <div class="calculator">
-      <div class="calculator__number">1</div>
-      <div class="calculator__number">2</div>
-      <div class="calculator__number">3</div>
-      <div class="calculator__number">4</div>
-      <div class="calculator__number">5</div>
-      <div class="calculator__number">6</div>
-      <div class="calculator__number">7</div>
-      <div class="calculator__number">8</div>
-      <div class="calculator__number">9</div>
-      <div class="calculator__number" data-action="decimal">.</div>
-      <div class="calculator__number">0</div>
-      <div class="calculator__cancel"  data-action="clear"><span class="material-icons">backspace</span></div>
+      <div class="calculator__number" on:click={getValue}>1</div>
+      <div class="calculator__number" on:click={getValue}>2</div>
+      <div class="calculator__number" on:click={getValue}>3</div>
+      <div class="calculator__number" on:click={getValue}>4</div>
+      <div class="calculator__number" on:click={getValue}>5</div>
+      <div class="calculator__number" on:click={getValue}>6</div>
+      <div class="calculator__number" on:click={getValue}>7</div>
+      <div class="calculator__number" on:click={getValue}>8</div>
+      <div class="calculator__number" on:click={getValue}>9</div>
+      <div class="calculator__number" on:click={getValue} data-action="decimal">.</div>
+      <div class="calculator__number" on:click={getValue}>0</div>
+      <div class="calculator__cancel" on:click={getValue}  data-action="clear"><span class="material-icons">backspace</span></div>
   </div>
 </div>
 
@@ -54,13 +76,6 @@
   background: var(--white);
   color: var(--greyDark);
   letter-spacing: 0.04rem;
-}
-
-.container button {
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
 }
 
 .type {
@@ -161,24 +176,6 @@ h3 {
   font-size: 2.5rem;
 }
 
-.type__amount button:disabled > span {
-  color: var(--greyLight-3);
-  cursor: default;
-}
-
-.type__amount button:disabled > span:hover {
-  color: var(--greyLight-3);
-}
-
-.type__amount button span {
-  font-size: 3.6rem;
-  cursor: pointer;
-  color: var(--greyDark);
-}
-.type__amount button span:hover {
-  color: var(--primary);
-}
-
 .calculator {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -218,6 +215,22 @@ h3 {
   display: flex;
   justify-content: center;
   color: var(--white);
+  border-radius: 50%;
+  box-shadow: 0px 6px 14px rgba(99, 85, 155, 0.4);
+  cursor: pointer;
+}
+
+#button_back {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 40px;
+  width: 40px;
+  font-size: 1.7rem;
+  color: var(--greyDark);
+  display: flex;
+  justify-content: center;
+  background: var(--white);
   border-radius: 50%;
   box-shadow: 0px 6px 14px rgba(99, 85, 155, 0.4);
   cursor: pointer;
